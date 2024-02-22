@@ -3,3 +3,13 @@ Dockerfile
 node_modules
 npm-debug.log
 dist
+/.cache
+.clinic
+.yarn-cache/
+/build
+/public/build
+*.log
+core*
+.git
+*.ext4
+agent-build
