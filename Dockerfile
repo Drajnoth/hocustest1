@@ -1,5 +1,25 @@
-FROM alpine:3.16
-RUN apk add --no-cache lua5.3 lua-filesystem lua-lyaml lua-http
-COPY fetch-latest-releases.lua /usr/local/bin
-VOLUME /out
-ENTRYPOINT [ "/usr/local/bin/fetch-latest-releases.lua" ]
+FROM ubuntu:14.04
+
+# Install.
+RUN \
+  sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
+  apt-get update && \
+  apt-get -y upgrade && \
+  apt-get install -y build-essential && \
+  apt-get install -y software-properties-common && \
+  apt-get install -y byobu curl git htop man unzip vim wget && \
+  rm -rf /var/lib/apt/lists/*
+
+# Add files.
+ADD root/.bashrc /root/.bashrc
+ADD root/.gitconfig /root/.gitconfig
+ADD root/.scripts /root/.scripts
+
+# Set environment variables.
+ENV HOME /root
+
+# Define working directory.
+WORKDIR /root
+
+# Define default command.
+CMD ["bash"]
