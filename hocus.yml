@@ -8,3 +8,4 @@ tasks:
     workspace: echo "This executes every time the workspace is started"
 vscode:
   extensions:
+    - redhat.vscode-yaml
