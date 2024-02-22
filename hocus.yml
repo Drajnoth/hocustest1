@@ -1,7 +1,7 @@
 image:
   buildContext: .
   # The Dockerfile MUST extend `hocusdev/workspace`.
-  file: Dockerfile
+  file: hocus.Dockerfile
 tasks:
   - name: First task
     prebuild: sleep 0.01
